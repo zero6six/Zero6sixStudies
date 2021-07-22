@@ -1,5 +1,4 @@
 import xlwt
-import re
 
 data = input("请输入原字符串（无标点符号，阿拉伯数字及英文)")
 number = 0
