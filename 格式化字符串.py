@@ -13,3 +13,4 @@ while True:
         text = list1[0]                    # 将列表中的名称转换为字符串型
         money = float(list1[1])            # 将列表中的金额转换为浮点型
         print(template.format(number2,text,money))
+        
