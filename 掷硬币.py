@@ -13,7 +13,7 @@ if display == "y":
 elif display == "n":
     display = False
 else:
-    display == True
+    display = True
     print("输入不合法，自动开启显示")
 
 try:
