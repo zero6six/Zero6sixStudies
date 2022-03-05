@@ -5,7 +5,7 @@ def translate(inputText):
     import requests
     import time
 
-    with open(r"E:\Develop\工程\gitcode\zero6six\Python\myAPI.txt","r") as file:
+    with open(r"gitcode\zero6six\Zero6sixStudies\temp\myAPI.txt","r") as file:
         readText = file.readlines()
         
         appid = str.strip(readText[0][6:])
