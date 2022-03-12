@@ -1,3 +1,3 @@
-/__pycache__
-/temp
-test.py
+python/__pycache__/
+python/temp
+python/test.py
