@@ -1,14 +1,19 @@
 import requests
 import json
 import base64
+import os
+from PIL import ImageGrab
+from io import BytesIO
 
 '''
 通用文字识别（高精度版）
 https://ai.baidu.com/ai-doc/OCR/1k3h7y3db
-将桌面上的 OCR.png 文字识别并 Print
 '''
 getAccessToken = False #是否重新获取 Access Token
 
+
+
+# 刷新 Access Token(一个 token 有效期 30 天)
 if getAccessToken:
     with open(r"gitcode\zero6six\Zero6sixStudies\python\temp\OCRAPI.json", "r") as file:
         jsonSet = json.load(file)
@@ -24,20 +29,28 @@ if getAccessToken:
         with open(r"gitcode\zero6six\Zero6sixStudies\python\temp\OCRAPI.json", "w+") as file:
             file.write(jsonData)
 
-
-
-# 二进制方式打开图片文件
-with open(r"C:\Users\zero6six\Desktop\OCR.png", "rb") as file:
-    img = base64.b64encode(file.read())
+# 获取 Access Token
 with open(r"gitcode\zero6six\Zero6sixStudies\python\temp\OCRAPI.json", "r") as file:
     jsonSet = json.load(file)
     access_token = jsonSet["access_token"]
 
+# 调用 Snipaste 截图到剪贴板
+os.system("D:\Snipaste-1.16.2-x64\Snipaste.exe snip -o clipboard")
+input("输入任意以继续")
+os.system("cls")                       # 清屏
+
+# 将剪贴板图像 base64 编码
+bytesIO = BytesIO()                    # 初始化
+ImageGrab.grabclipboard().save(bytesIO, format="png")
+img = base64.b64encode(bytesIO.getvalue())
+
+# 拼接请求网址
 request_url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic"
 params = {"image":img}
 request_url = request_url + "?access_token=" + access_token
 headers = {'content-type': 'application/x-www-form-urlencoded'}
 
+# 发送请求
 response = requests.post(request_url, data=params, headers=headers)
 if response:
     jsonSet = response.json()
