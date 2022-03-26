@@ -15,7 +15,7 @@ getAccessToken = False #是否重新获取 Access Token
 
 # 刷新 Access Token(一个 token 有效期 30 天)
 if getAccessToken:
-    with open(r"gitcode\zero6six\Zero6sixStudies\python\temp\OCRAPI.json", "r") as file:
+    with open(r"E:\Develop\project\gitcode\zero6six\Zero6sixStudies\python\temp\OCRAPI.json", "r") as file:
         jsonSet = json.load(file)
         API_key = jsonSet["API_key"]
         secret_key = jsonSet["secret_key"]
@@ -26,11 +26,11 @@ if getAccessToken:
         access_token = response.json()["access_token"]
         jsonSet["access_token"] = access_token
         jsonData = json.dumps(jsonSet)
-        with open(r"gitcode\zero6six\Zero6sixStudies\python\temp\OCRAPI.json", "w+") as file:
+        with open(r"E:\Develop\project\gitcode\zero6six\Zero6sixStudies\python\temp\OCRAPI.json", "w+") as file:
             file.write(jsonData)
 
 # 获取 Access Token
-with open(r"gitcode\zero6six\Zero6sixStudies\python\temp\OCRAPI.json", "r") as file:
+with open(r"E:\Develop\project\gitcode\zero6six\Zero6sixStudies\python\temp\OCRAPI.json", "r") as file:
     jsonSet = json.load(file)
     access_token = jsonSet["access_token"]
 
