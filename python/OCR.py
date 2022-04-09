@@ -53,6 +53,6 @@ headers = {'content-type': 'application/x-www-form-urlencoded'}
 # 发送请求
 response = requests.post(request_url, data=params, headers=headers)
 if response:
-    jsonSet = response.json()
-    for i in jsonSet.items():
-        print(i)
+    jsonDic = response.json()
+    for i in jsonDic['words_result']:
+        print(i['words'])
