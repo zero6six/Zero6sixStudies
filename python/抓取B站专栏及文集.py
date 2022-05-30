@@ -51,6 +51,7 @@ while True:
     '请注意：下载后的文档需及时改名，否则之后下载的会在原文档末尾追加！\n'
     '[0]退出 [1]专栏 [2]文集')
     choice = input('您的选择是 ')
+    wait = False
     if choice == '0':
         break
     elif choice == '1':
